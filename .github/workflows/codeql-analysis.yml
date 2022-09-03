@@ -50,13 +50,7 @@ jobs:
           # Prefix the list here with "+" to use these queries and those in the config file.
 
           # Details on CodeQL's query packs refer to : https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
-          queries: |
-            security-and-quality,
-            github/codeql/java/ql/src/codeql-suites/java-code-scanning.qls@codeql-cli/latest,
-            github/codeql/java/ql/src/codeql-suites/java-lgtm-full.qls@codeql-cli/latest,
-            github/codeql/java/ql/src/codeql-suites/java-lgtm.qls@codeql-cli/latest,
-            github/codeql/java/ql/src/codeql-suites/java-security-and-quality.qls@codeql-cli/latest,
-            github/codeql/java/ql/src/codeql-suites/java-security-extended.qls@codeql-cli/latest
+          queries: github/codeql/java/ql/src/codeql-suites/java-security-extended.qls@codeql-cli/latest
 
           packs: +codeql/java-queries:experimental/Security/CWE/CWE-020/Log4jJndiInjection.ql
           # config-file: ./.github/codeql/codeql-config.yml
