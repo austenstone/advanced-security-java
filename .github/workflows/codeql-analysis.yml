@@ -50,9 +50,9 @@ jobs:
         # Prefix the list here with "+" to use these queries and those in the config file.
         
         # Details on CodeQL's query packs refer to : https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
-        queries: security-and-quality,github/codeql/java/ql/src/Security/CWE/CWE-023/
+        queries: security-and-quality
         #,github/codeql/java/ql/src/Security/CWE/CWE-023/PartialPathTraversal.ql@main
-        #packs: codeql/java-queries:Security/CWE/CWE-023
+        packs: github/codeql/java/ql/src/Security/CWE/CWE-023
         # config-file: ./.github/codeql/codeql-config.yml
         
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
