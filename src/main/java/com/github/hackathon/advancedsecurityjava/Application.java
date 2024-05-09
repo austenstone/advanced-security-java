@@ -36,11 +36,11 @@ public class Application {
 	
 		List<Book> books = new ArrayList<Book>();
 	
-		books.add(new Book("The Hobbit", "JRR Tolkien", true));
-		books.add(new Book("The Fellowship of the Ring", "JRR Tolkien", true));
-		books.add(new Book("The Eye of the World", "Robert Jordan"));
-		books.add(new Book("A Game of Thrones", "George R. R. Martin", true));
-		books.add(new Book("The Way of Kings", "Brandon Sanderson"));
+		books.add(new Book("The Hobbit", "JRR Tolkien", "Fantasy", true));
+		books.add(new Book("The Fellowship of the Ring", "JRR Tolkien", "Fantasy", true));
+		books.add(new Book("The Eye of the World", "Robert Jordan", "Fantasy"));
+		books.add(new Book("A Game of Thrones", "George R. R. Martin", "Fantasy", true));
+		books.add(new Book("The Way of Kings", "Brandon Sanderson", "Fantasy"));
 	
 		// Create database entries
 		createDatabaseEntries(books);
@@ -67,13 +67,14 @@ public class Application {
 	  public static void createDatabaseEntries(List<Book> books) {
 	
 		try (Connection connection = DriverManager.getConnection(connectionString)) {
-		  String query = "INSERT INTO Books (name, author, read) VALUES(?, ?, ?)";
+		  String query = "INSERT INTO Books (name, author, genre, read) VALUES(?, ?, ?, ?)";
 	
 		  for (Book book : books) {
 			try (PreparedStatement prepStmt = connection.prepareStatement(query);) {
 			  prepStmt.setString(1, book.name);
 			  prepStmt.setString(2, book.author);
 			  prepStmt.setInt(3, book.read? 1 : 0);
+				prepStmt.setString(4, book.genre);
 	
 			  prepStmt.executeUpdate();
 	

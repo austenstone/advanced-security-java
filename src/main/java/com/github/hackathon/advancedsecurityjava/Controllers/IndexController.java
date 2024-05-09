@@ -25,7 +25,8 @@ public class IndexController {
   @ResponseBody
   public List<Book> getBooks(@RequestParam(name = "name", required = false) String bookname,
       @RequestParam(name = "author", required = false) String bookauthor,
-      @RequestParam(name = "read", required = false) Boolean bookread) {
+      @RequestParam(name = "read", required = false) Boolean bookread),
+      @RequestParam(name = "genre", required = false) String bookgenre) {
     List<Book> books = new ArrayList<Book>();
 
     Statement statement = null;
@@ -43,6 +44,9 @@ public class IndexController {
       } else if (bookauthor != null) {
         // Filter by book author
         query = "SELECT * FROM Books WHERE author LIKE '%" + bookauthor + "%'";
+      } else if (bookgenre != null) {
+        // Filter by book genre
+        query = "SELECT * FROM Books WHERE genre LIKE " + bookauthor;
       } else if (bookread != null) {
         // Filter by if the book has been read or not
         Integer read = bookread ? 1 : 0;
